@@ -23,6 +23,7 @@ class wechatCallbackapiTest
         }
     }
 
+    //接收
     public function responseMsg()
     {
 		//get post data, May be due to the different environments
@@ -46,12 +47,15 @@ class wechatCallbackapiTest
 							<MsgType><![CDATA[%s]]></MsgType>
 							<Content><![CDATA[%s]]></Content>
 							<FuncFlag>0</FuncFlag>
-							</xml>";        
+							</xml>"; 
+                //接收文本信息       
                 if( $msgType == 'text'){
                     if(!empty( $keyword ))
                     {
                         $msgType = "text";
-                        $contentStr = "Welcome to wechat world!";
+                        if( 1 == $keyword){
+                           $contentStr = "110"; 
+                        }
                         $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
                         echo $resultStr;
                     }else{
