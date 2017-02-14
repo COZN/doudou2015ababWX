@@ -55,7 +55,7 @@ class wechatCallbackapiTest
                             <MsgType><![CDATA[news]]></MsgType>
                             <ArticleCount>%s</ArticleCount>
                             %s
-                            </xml>"
+                            </xml>";
                 if(!empty( $keyword ))
                 {
                     //接收文本信息   
