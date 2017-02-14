@@ -48,6 +48,7 @@ class wechatCallbackapiTest
 							<Content><![CDATA[%s]]></Content>
 							<FuncFlag>0</FuncFlag>
 							</xml>"; 
+
                 $newsTpl = "<xml>
                             <ToUserName><![CDATA[toUser]]></ToUserName>
                             <FromUserName><![CDATA[fromUser]]></FromUserName>
@@ -70,9 +71,7 @@ class wechatCallbackapiTest
                         echo $resultStr;
                     }elseif( $msgType == 'location'){
                         $msgType = "text";
-
-                            $contentStr = '没提供那么多服务';
-
+                        $contentStr = '没提供那么多服务';
                         $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
                         echo $resultStr;
                     }
