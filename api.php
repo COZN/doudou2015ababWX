@@ -65,7 +65,7 @@ class wechatCallbackapiTest
                     }
                 }elseif( $msgType == 'image'){
                     if( !empty($keyword) ){
-                        $msg = "text";
+                        $msgType = "text";
                         $contentStr = '22';
                         $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
                         echo $resultStr;
