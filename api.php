@@ -61,7 +61,9 @@ class wechatCallbackapiTest
                     //接收文本信息   
                     if( $msgType == 'text'){
                         $msgType = "text";
-                        $contentStr = "110"; 
+                        if( 1 == $keyword ){
+                           $contentStr = "110"; 
+                        }
                         $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
                         echo $resultStr;
                     }else if( 'image' == $msgType){
