@@ -68,7 +68,7 @@ class wechatCallbackapiTest
                         }
                         $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
                         echo $resultStr;
-                    }elseif( $msgType == 'image'){
+                    }elseif( $msgType == 'location'){
                         $msgType = "text";
 
                             $contentStr = '没提供那么多服务';
