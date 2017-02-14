@@ -6,7 +6,9 @@
 //define your token
 define("TOKEN", "weixin");
 $wechatObj = new wechatCallbackapiTest();
-$wechatObj->valid();
+//$wechatObj->valid();
+//开启微信自动回复功能
+$wechatObj->responseMsg();
 
 class wechatCallbackapiTest
 {
@@ -34,6 +36,7 @@ class wechatCallbackapiTest
               	$postObj = simplexml_load_string($postStr, 'SimpleXMLElement', LIBXML_NOCDATA);
                 $fromUsername = $postObj->FromUserName;
                 $toUsername = $postObj->ToUserName;
+                $msgType = $postObj->MsgType;
                 $keyword = trim($postObj->Content);
                 $time = time();
                 $textTpl = "<xml>
@@ -43,17 +46,18 @@ class wechatCallbackapiTest
 							<MsgType><![CDATA[%s]]></MsgType>
 							<Content><![CDATA[%s]]></Content>
 							<FuncFlag>0</FuncFlag>
-							</xml>";             
-				if(!empty( $keyword ))
-                {
-              		$msgType = "text";
-                	$contentStr = "Welcome to wechat world!";
-                	$resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
-                	echo $resultStr;
-                }else{
-                	echo "Input something...";
-                }
-
+							</xml>";        
+                if( $msgType == 'text'){
+                    if(!empty( $keyword ))
+                    {
+                        $msgType = "text";
+                        $contentStr = "Welcome to wechat world!";
+                        $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
+                        echo $resultStr;
+                    }else{
+                        echo "Input something...";
+                    }
+                }     
         }else {
         	echo "";
         	exit;
