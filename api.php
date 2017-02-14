@@ -64,11 +64,18 @@ class wechatCallbackapiTest
                         echo "Input something...";
                     }
                 }elseif( $msgType == 'image'){
-                    if( !empty($keyword) ){
+                    if(!empty( $keyword ))
+                    {
                         $msgType = "text";
-                        $contentStr = '22';
+                        if( 1 == $keyword){
+                            $contentStr = "110";
+                        }else{
+                            $contentStr = "没提供那么多服务";
+                        }
                         $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
                         echo $resultStr;
+                    }else{
+                        echo "Input something...";
                     }
                 }     
         }else {
