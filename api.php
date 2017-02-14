@@ -62,24 +62,20 @@ class wechatCallbackapiTest
                     if( $msgType == 'text'){
                         $msgType = "text";
                         if( 1 == $keyword ){
-                           $contentStr = "110"; 
+                            $contentStr = "110"; 
+                        }else{
+                            $contentStr = '没提供那么多服务';
                         }
                         $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
                         echo $resultStr;
                     }else if( 'image' == $msgType){
-                        $msgType = 'news';
-                        $count = 1;
-                        $str = '<Articles>';
-                        for($i=1;$i<=$count;$i++){
-                            $str .= '<item>
-                                    <Title><![CDATA[我的天]]></Title>
-                                    <Description><![CDATA[疯狂的api]]></Description>
-                                    <PicUrl><![CDATA[https://mp.weixin.qq.com/misc/getheadimg?fakeid=3096430347&token=154153930&lang=zh_CN]]></PicUrl>
-                                    <Url><![CDATA[http://mp.weixin.qq.com/s?__biz=MzA4OTI2ODEwNg==&mid=2681037458&idx=1&sn=2466f564c4f18e70cfeeeea20120d196&chksm=8a244877bd53c1613464426269b239e0a7486321596bbde42cb71cf0404a741b940fc38cb944&scene=0#rd]]></Url>
-                                    </item>';
+                        $msgType = "text";
+                        if( 1 == $keyword ){
+                            $contentStr = "110"; 
+                        }else{
+                            $contentStr = '没提供那么多服务';
                         }
-                        $str .= '</Articles>';
-                        $resultStr = sprintf($newsTpl, $fromUsername, $toUsername, $time, $msgType, $count, $str);
+                        $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
                         echo $resultStr;
                     }
                 }else{
