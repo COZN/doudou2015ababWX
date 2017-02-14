@@ -48,26 +48,29 @@ class wechatCallbackapiTest
 							<Content><![CDATA[%s]]></Content>
 							<FuncFlag>0</FuncFlag>
 							</xml>"; 
-
-                $newsTpl = "<xml>
-                            <ToUserName><![CDATA[toUser]]></ToUserName>
-                            <FromUserName><![CDATA[fromUser]]></FromUserName>
-                            <CreateTime>12345678</CreateTime>
-                            <MsgType><![CDATA[news]]></MsgType>
-                            <ArticleCount>%s</ArticleCount>
-                            %s
-                            </xml>";
-                if(!empty( $keyword ))
-                {
-
+                //接收文本信息       
+                if( $msgType == 'text'){
+                    if(!empty( $keyword ))
+                    {
                         $msgType = "text";
-                        $contentStr = '不要乱输入';
+                        if( 1 == $keyword){
+                            $contentStr = "110";
+                        }else{
+                            $contentStr = "没提供那么多服务";
+                        }
                         $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
                         echo $resultStr;
-                  
-                }else{
-                    echo "Input something...";
-                }   
+                    }else{
+                        echo "Input something...";
+                    }
+                }elseif( $msgType == 'image'){
+                    if( !empty($keyword) ){
+                        $msg = "text";
+                        $contentStr = '22';
+                        $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
+                        echo $resultStr;
+                    }
+                }     
         }else {
         	echo "";
         	exit;
