@@ -56,7 +56,12 @@ class wechatCallbackapiTest
                             <ArticleCount>%s</ArticleCount>
                             %s
                             </xml>";
-  
+                if(!empty( $keyword ))
+                {
+
+                }else{
+                    echo "Input something...";
+                }   
         }else {
         	echo "";
         	exit;
