@@ -56,20 +56,7 @@ class wechatCallbackapiTest
                             <ArticleCount>%s</ArticleCount>
                             %s
                             </xml>";
-                if(!empty( $keyword ))
-                {
-                    //接收文本信息   
-                    if( $msgType == 'text'){
-                        $msgType = "text";
-                        if( 1 == $keyword){
-                           $contentStr = "110"; 
-                        }
-                        $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
-                        echo $resultStr;
-                    }
-                }else{
-                    echo "Input something...";
-                }   
+  
         }else {
         	echo "";
         	exit;
