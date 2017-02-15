@@ -43,6 +43,8 @@ class wechatCallbackapiTest
                 $msgType = $postObj->MsgType;
                 //用户发送的消息
                 $keyword = trim($postObj->Content);
+                //语音识别结果
+                $rec = $postObj->Recognition;
                 $time = time();
                 //发送文本模板
                 $textTpl = "<xml>
@@ -72,8 +74,11 @@ class wechatCallbackapiTest
                             $contentStr = "110";
                         }else{
                             $url = "http://www.tuling123.com/openapi/api?key=6e9c31bec6993de86b1de2f8ebf88a85&info={$keyword}";
+                            //模拟发送请求
                             $result = file_get_contents($url);
+                            //格式化json数据
                             $json = json_decode($result);
+                            //回复内容
                             $contentStr = $json->text;
                         }
                         //格式化XML数据
@@ -102,6 +107,14 @@ class wechatCallbackapiTest
                     }
                     $str .= '</Articles>';
                     $resultStr = sprintf($newsTpl, $fromUsername, $toUsername, $time, $msgType, $count, $str);
+                    echo $resultStr;
+                }elseif( $msgType == 'voice'){
+                    $msgType = 'text';
+                    $url = "http://www.tuling123.com/openapi/api?key=6e9c31bec6993de86b1de2f8ebf88a85&info={$rec}";
+                    $result = file_get_contents($url);
+                    $json = json_decode($result);
+                    $contentStr = $json->text;
+                    $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
                     echo $resultStr;
                 }     
         }else {
