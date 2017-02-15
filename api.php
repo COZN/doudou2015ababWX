@@ -87,20 +87,10 @@ class wechatCallbackapiTest
                         $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
                         echo $resultStr;
                 }elseif( $msgType == 'location' ){
-                    $msgType = 'news';
-                    $count = 1;
-                    $str = '<Acticles>';
-                    for($i=1;$i<=1;$i++){
-                        $str .= '<item>
-                                <Title><![CDATA[我的天]]></Title>
-                                <Description><![CDATA[这个新闻好看]]></Description>
-                                <PicUrl><![CDATA[http://n.sinaimg.cn/news/transform/20170214/4rmn-fyamkqa6192887.jpg]]></PicUrl>
-                                <Url><![CDATA[http://news.sina.com.cn/china/xlxw/2017-02-14/doc-ifyameqr7515522.shtml]]></Url>
-                                </item>';
-                    }
-                    $str .= '</Articles>';
-                    $resultStr = sprintf($newsTpl, $fromUsername, $toUsername, $time, $msgType, $count, $contentStr);
-                    echo $resultStr;
+                        $msgType = "text";
+                        $contentStr = '这是图片';
+                        $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
+                        echo $resultStr;
                 }     
         }else {
         	echo "";
