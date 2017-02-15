@@ -98,7 +98,7 @@ class wechatCallbackapiTest
                                 </item>';
                     }
                     $str .= '</Articles>';
-                    $resultStr = sprintf($newsTpl, $fromUsername, $toUsername, $time, $msgType, $count, $contentStr);
+                    $resultStr = sprintf($newsTpl, $fromUsername, $toUsername, $time, $msgType, $count, $str);
                     echo $resultStr;
                 }     
         }else {
