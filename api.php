@@ -64,8 +64,7 @@ class wechatCallbackapiTest
                             </xml>"; 
                 //接收文本信息       
                 if( $msgType == 'text'){
-                    if(!empty( $keyword ))
-                    {
+                    if(!empty( $keyword )){
                         //以文本形式回复
                         $msgType = "text";
                         if( 1 == $keyword){
@@ -82,15 +81,25 @@ class wechatCallbackapiTest
                     }
                 //接收图片
                 }elseif( $msgType == 'image'){
-                        $msgType = "text";
-                        $contentStr = '这是图片';
-                        $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
-                        echo $resultStr;
+                    $msgType = "text";
+                    $contentStr = '这是图片';
+                    $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
+                    echo $resultStr;
                 }elseif( $msgType == 'location' ){
-                        $msgType = "text";
-                        $contentStr = '这是图片';
-                        $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
-                        echo $resultStr;
+                    $msgType = 'news';
+                    $count = 1;
+                    $str = '<Articles>';
+                    for($i=1;$i<=$count;$i++){
+                        $str .= '<item>
+                                <Title><![CDATA[我的天]]></Title>
+                                <Description><![CDATA[这个新闻好看]]></Description>
+                                <PicUrl><![CDATA[http://n.sinaimg.cn/news/transform/20170214/4rmn-fyamkqa6192887.jpg]]></PicUrl>
+                                <Url><![CDATA[http://news.sina.com.cn/china/xlxw/2017-02-14/doc-ifyameqr7515522.shtml]]></Url>
+                                </item>';
+                    }
+                    $str .= '</Articles>';
+                    $resultStr = sprintf($newsTpl, $fromUsername, $toUsername, $time, $msgType, $count, $contentStr);
+                    echo $resultStr;
                 }     
         }else {
         	echo "";
