@@ -71,7 +71,10 @@ class wechatCallbackapiTest
                             //回复内容
                             $contentStr = "110";
                         }else{
-                            $contentStr = "没提供那么多服务";
+                            $url = "http://www.tuling123.com/openapi/api?key=6e9c31bec6993de86b1de2f8ebf88a85&info={$keyword}";
+                            $result = file_get_contents($url);
+                            $json = json_decode($result);
+                            $contentStr = $json->text;
                         }
                         //格式化XML数据
                         $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
